@@ -59,7 +59,7 @@ while True:
 #Create order object
 order = Order()
 order.action = 'BUY'
-order.totalQuantity = 1000
+order.totalQuantity = 100000
 order.orderType = 'LMT'
 order.lmtPrice = '1.10'
 order.orderId = app.nextorderId
@@ -69,13 +69,13 @@ order.transmit = False
 #Create stop loss order object
 stop_order = Order()
 stop_order.action = 'SELL'
-stop_order.totalQuantity = 1000
+stop_order.totalQuantity = 100000
 stop_order.orderType = 'STP'
 stop_order.auxPrice = '1.09'
 stop_order.orderId = app.nextorderId
 app.nextorderId += 1
 stop_order.parentId = order.orderId
-order.transmit = True
+stop_order.transmit = True
 
 #Place orders
 app.placeOrder(order.orderId, FX_order('EURUSD'), order)
